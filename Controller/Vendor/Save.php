@@ -1,6 +1,6 @@
 <?php
 
-namespace Amitshree\Marketplace\Controller\Vendor;
+namespace FlavioSans\Marketplace\Controller\Vendor;
 
 
 class Save extends \Magento\Framework\App\Action\Action

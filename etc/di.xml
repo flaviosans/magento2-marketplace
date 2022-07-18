@@ -3,11 +3,11 @@
     <type name="Magento\Framework\Console\CommandList">
         <arguments>
             <argument name="commands" xsi:type="array">
-                <item name="save_customers" xsi:type="object">Amitshree\Marketplace\Console\Command\CustomerSaveCommand</item>
+                <item name="save_customers" xsi:type="object">FlavioSans\Marketplace\Console\Command\CustomerSaveCommand</item>
                </argument>
         </arguments>
     </type>
     <type name="Magento\Customer\Api\CustomerRepositoryInterface">
-        <plugin name="CustomerRepositoryInterface::before" type="Amitshree\Marketplace\Plugin\Customer\Api\CustomerRepositoryInterface" />
+        <plugin name="CustomerRepositoryInterface::before" type="FlavioSans\Marketplace\Plugin\Customer\Api\CustomerRepositoryInterface" />
     </type>
 </config>

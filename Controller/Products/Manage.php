@@ -1,6 +1,6 @@
 <?php
 
-namespace Amitshree\Marketplace\Controller\Products;
+namespace FlavioSans\Marketplace\Controller\Products;
 
 class Manage extends \Magento\Framework\App\Action\Action {
 

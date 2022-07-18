@@ -1,6 +1,6 @@
 <?php
 
-namespace Amitshree\Marketplace\Plugin\Customer\Controller\Account;
+namespace FlavioSans\Marketplace\Plugin\Customer\Controller\Account;
 use Magento\Customer\Api\AccountManagementInterface;
 use Magento\Customer\Model\Session;
 use Magento\Framework\Data\Form\FormKey\Validator;

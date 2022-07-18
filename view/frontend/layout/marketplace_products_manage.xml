@@ -9,7 +9,7 @@
 
     <body>
         <referenceContainer name="content">
-            <block class="Magento\Framework\View\Element\Template" name="manage_products" template="Amitshree_Marketplace::products/manage.phtml" cacheable="false" />
+            <block class="Magento\Framework\View\Element\Template" name="manage_products" template="FlavioSans_Marketplace::products/manage.phtml" cacheable="false" />
         </referenceContainer>
     </body>
 </page>

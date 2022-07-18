@@ -1,6 +1,6 @@
 <?php
 
-namespace Amitshree\Marketplace\Block;
+namespace FlavioSans\Marketplace\Block;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
 
@@ -9,12 +9,12 @@ class Registration extends Template
     /**
      * Registration constructor.
      * @param Context $context
-     * @param \Amitshree\Marketplace\Model\Config\Source\IsVendorOptions $isVendorOptions
+     * @param \FlavioSans\Marketplace\Model\Config\Source\IsVendorOptions $isVendorOptions
      * @param array $data
      */
     public function __construct(
         Context $context,
-        \Amitshree\Marketplace\Model\Config\Source\CustomerYesNoOptions $isVendorOptions,
+        \FlavioSans\Marketplace\Model\Config\Source\CustomerYesNoOptions $isVendorOptions,
         array $data
     )
     {

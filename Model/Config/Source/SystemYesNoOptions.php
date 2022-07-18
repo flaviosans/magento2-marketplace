@@ -4,7 +4,7 @@
  * Used in creating options for Yes|No config value selection
  *
  */
-namespace Amitshree\Marketplace\Model\Config\Source;
+namespace FlavioSans\Marketplace\Model\Config\Source;
 
 class SystemYesNoOptions implements \Magento\Framework\Option\ArrayInterface
 {

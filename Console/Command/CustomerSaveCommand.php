@@ -1,6 +1,6 @@
 <?php
 
-namespace Amitshree\Marketplace\Console\Command;
+namespace FlavioSans\Marketplace\Console\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
