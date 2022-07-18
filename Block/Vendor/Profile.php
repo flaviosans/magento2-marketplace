@@ -1,5 +1,5 @@
 <?php
-namespace Amitshree\Marketplace\Block\Vendor;
+namespace FlavioSans\Marketplace\Block\Vendor;
 
 use Magento\Framework\View\Element\Template\Context;
 

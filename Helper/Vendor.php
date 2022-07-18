@@ -1,6 +1,6 @@
 <?php
 
-namespace Amitshree\Marketplace\Helper;
+namespace FlavioSans\Marketplace\Helper;
 
 class Vendor extends \Magento\Framework\App\Helper\AbstractHelper
 {

@@ -3,7 +3,7 @@
  * Copyright © 2016 Magento. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Amitshree\Marketplace\Controller\Customer\Account;
+namespace FlavioSans\Marketplace\Controller\Customer\Account;
 
 use Magento\Customer\Model\Account\Redirect as AccountRedirect;
 use Magento\Customer\Api\Data\AddressInterface;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Amitshree\Marketplace\Setup;
+namespace FlavioSans\Marketplace\Setup;
 
 use Magento\Eav\Setup\EavSetup;
 use Magento\Eav\Setup\EavSetupFactory;
@@ -125,7 +125,7 @@ class InstallData implements InstallDataInterface
             'type' => 'int',
             'label' => 'Is Vendor?',
             'input' => 'select',
-            "source"   => "Amitshree\Marketplace\Model\Config\Source\CustomerYesNoOptions",
+            "source"   => "FlavioSans\Marketplace\Model\Config\Source\CustomerYesNoOptions",
             'required' => false,
             'default' => '0',
             'visible' => true,
@@ -152,7 +152,7 @@ class InstallData implements InstallDataInterface
                 'type' => 'int',
                 'label' => 'Approve Account',
                 'input' => 'select',
-                "source"   => "Amitshree\Marketplace\Model\Config\Source\CustomerYesNoOptions",
+                "source"   => "FlavioSans\Marketplace\Model\Config\Source\CustomerYesNoOptions",
                 'required' => false,
                 'default' => '0',
                 'visible' => true,

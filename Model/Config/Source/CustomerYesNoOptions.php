@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Amitshree\Marketplace\Model\Config\Source;
+namespace FlavioSans\Marketplace\Model\Config\Source;
 
 use Magento\Eav\Model\ResourceModel\Entity\Attribute\OptionFactory;
 

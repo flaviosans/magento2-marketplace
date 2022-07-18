@@ -1,5 +1,5 @@
 {
-  "name": "amitshree-marketplace",
+  "name": "flaviosans-marketplace",
   "description": "N/A",
   "require": {
     "php": "~5.6.5|7.*"
@@ -15,7 +15,7 @@
       "registration.php"
     ],
     "psr-4": {
-      "Amitshree\\Marketplace\\": ""
+      "FlavioSans\\Marketplace\\": ""
     }
   }
 }

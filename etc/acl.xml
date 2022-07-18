@@ -6,8 +6,8 @@
             <resource id="Magento_Backend::stores">
                 <resource id="Magento_Backend::stores_settings">
                     <resource id="Magento_Config::config">
-                        <resource id="Amitshree_Marketplace::marketplace" title="Marketplace" sortOrder="50">
-                            <resource id="Amitshree_Marketplace::account_aproval" title="Account Approval" sortOrder="50" />
+                        <resource id="FlavioSans_Marketplace::marketplace" title="Marketplace" sortOrder="50">
+                            <resource id="FlavioSans_Marketplace::account_aproval" title="Account Approval" sortOrder="50" />
                         </resource>
                     </resource>
                 </resource>

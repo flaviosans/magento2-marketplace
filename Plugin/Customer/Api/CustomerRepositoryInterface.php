@@ -1,6 +1,6 @@
 <?php
 
-namespace Amitshree\Marketplace\Plugin\Customer\Api;
+namespace FlavioSans\Marketplace\Plugin\Customer\Api;
 use Magento\Customer\Api\CustomerRepositoryInterface as CustomerRepository;
 use Magento\Customer\Api\Data\CustomerInterface;
 

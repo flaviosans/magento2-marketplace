@@ -1,6 +1,6 @@
 <?php
 
-namespace Amitshree\Marketplace\Setup;
+namespace FlavioSans\Marketplace\Setup;
 
 
 class Uninstall implements \Magento\Framework\Setup\UninstallInterface

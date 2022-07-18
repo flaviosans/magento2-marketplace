@@ -2,7 +2,7 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="form.additional.info">
-            <block class="Amitshree\Marketplace\Block\Registration" name="is_vendor" template="Amitshree_Marketplace::register/is_vendor.phtml"/>
+            <block class="FlavioSans\Marketplace\Block\Registration" name="is_vendor" template="FlavioSans_Marketplace::register/is_vendor.phtml"/>
         </referenceContainer>
     </body>
 </page>

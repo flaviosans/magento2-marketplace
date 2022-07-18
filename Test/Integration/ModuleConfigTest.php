@@ -1,6 +1,6 @@
 <?php
 
-namespace Amitshree\Marketplace\Test\Integration;
+namespace FlavioSans\Marketplace\Test\Integration;
 
 use Magento\Framework\Component\ComponentRegistrar;
 use Magento\Framework\Module\ModuleList;
@@ -17,14 +17,14 @@ class ModuleConfigTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->subjectModuleName = 'Amitshree_Marketplace';
+        $this->subjectModuleName = 'FlavioSans_Marketplace';
         $this->objectManager = ObjectManager::getInstance();
     }
 
     public function testTheModuleIsRegistered()
     {
         $registrar = new ComponentRegistrar();
-        $this->assertArrayHasKey('Amitshree_Marketplace', $registrar->getPaths(ComponentRegistrar::MODULE));
+        $this->assertArrayHasKey('FlavioSans_Marketplace', $registrar->getPaths(ComponentRegistrar::MODULE));
     }
 
     public function testTheModuleIsConfiguredInTheTestEnvironment()
