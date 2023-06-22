@@ -6,7 +6,7 @@ Work in progress. Please do not install it atm.
 ###### Install Extension
 ```
 composer config repositories.magento2-marketplace git git@github.com:flaviosans/magento2-marketplace.git
-composer require flaviosans-marketplace:dev-master
+composer require flaviosans/magento2-marketplace:dev-main
 php bin/magento setup:upgrade
 ```
 ###### Save existing customers to assign new custom attributes
