@@ -1,6 +1,8 @@
 <?php
 
 namespace FlavioSans\Marketplace\Block\Vendor;
+
+use Magento\Framework\Phrase;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
 
@@ -13,15 +15,14 @@ class AccountDetailsSidebar extends Template
     public function __construct(
         Context $context,
         array $data
-    )
-    {
+    ) {
         parent::__construct($context, $data);
     }
 
     /**
      * Retrieve block title
      *
-     * @return \Magento\Framework\Phrase
+     * @return Phrase
      */
     public function getTitle()
     {
@@ -38,9 +39,10 @@ class AccountDetailsSidebar extends Template
     }
 
     /**
-    * Manage products url
-    */
-    public function getProductsUrl() {
+     * Manage products url
+     */
+    public function getProductsUrl()
+    {
         return $this->getUrl('marketplace/products/manage');
     }
 

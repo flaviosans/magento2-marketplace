@@ -3,14 +3,18 @@
 namespace FlavioSans\Marketplace\Controller\Vendor;
 
 
-class Save extends \Magento\Framework\App\Action\Action
+use Magento\Framework\App\Action\Action;
+use Magento\Framework\App\Action\Context;
+use Magento\Framework\View\Result\PageFactory;
+
+class Save extends Action
 {
-    protected $resultPageFactory;
+    protected PageFactory $resultPageFactory;
     protected $logger;
 
     public function __construct(
-        \Magento\Framework\App\Action\Context $context,
-        \Magento\Framework\View\Result\PageFactory $resultPageFactory
+        Context $context,
+        PageFactory $resultPageFactory
     ) {
         $this->resultPageFactory = $resultPageFactory;
         parent::__construct($context);

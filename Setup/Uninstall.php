@@ -3,18 +3,23 @@
 namespace FlavioSans\Marketplace\Setup;
 
 
-class Uninstall implements \Magento\Framework\Setup\UninstallInterface
-{
-    protected $eavSetupFactory;
+use Magento\Eav\Setup\EavSetupFactory;
+use Magento\Framework\Setup\ModuleContextInterface;
+use Magento\Framework\Setup\SchemaSetupInterface;
+use Magento\Framework\Setup\UninstallInterface;
 
-    public function __construct(\Magento\Eav\Setup\EavSetupFactory $eavSetupFactory)
+class Uninstall implements UninstallInterface
+{
+    protected EavSetupFactory $eavSetupFactory;
+
+    public function __construct(EavSetupFactory $eavSetupFactory)
     {
         $this->eavSetupFactory = $eavSetupFactory;
     }
 
 
 
-    public function uninstall(\Magento\Framework\Setup\SchemaSetupInterface $setup, \Magento\Framework\Setup\ModuleContextInterface $context)
+    public function uninstall(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
         $setup->startSetup();
 

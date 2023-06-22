@@ -2,6 +2,7 @@
 
 namespace FlavioSans\Marketplace\Console\Command;
 
+use Exception;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -14,18 +15,18 @@ class CustomerSaveCommand extends  Command
     /**
      * @var Customer
      */
-    protected $customer;
+    protected Customer $customer;
 
     /**
      * @var CustomerRepositoryInterface
      */
-    protected $customerRepository;
+    protected CustomerRepositoryInterface $customerRepository;
 
 
     /**
      * @var State
      */
-    protected $state;
+    protected State $state;
 
 
     public function __construct(
@@ -69,7 +70,7 @@ class CustomerSaveCommand extends  Command
             try {
                 $this->customerRepository->save($customer);
             }
-            catch (\Exception $e) {
+            catch (Exception $e) {
                 $this->writeErrorLog($e->getMessage());
             }
         }

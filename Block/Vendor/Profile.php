@@ -1,10 +1,11 @@
 <?php
 namespace FlavioSans\Marketplace\Block\Vendor;
 
+use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
 
 
-class Profile extends \Magento\Framework\View\Element\Template
+class Profile extends Template
 {
 
     /**

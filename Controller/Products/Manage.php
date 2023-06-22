@@ -2,13 +2,17 @@
 
 namespace FlavioSans\Marketplace\Controller\Products;
 
-class Manage extends \Magento\Framework\App\Action\Action {
+use Magento\Framework\App\Action\Action;
+use Magento\Framework\App\Action\Context;
+use Magento\Framework\View\Result\PageFactory;
 
-	 protected $resultPageFactory;
+class Manage extends Action {
+
+	 protected PageFactory $resultPageFactory;
 
     public function __construct(
-        \Magento\Framework\App\Action\Context $context,
-        \Magento\Framework\View\Result\PageFactory $resultPageFactory
+        Context $context,
+        PageFactory $resultPageFactory
     ) {
         $this->resultPageFactory = $resultPageFactory;
         parent::__construct($context);

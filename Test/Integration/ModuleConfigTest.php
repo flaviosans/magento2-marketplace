@@ -2,18 +2,22 @@
 
 namespace FlavioSans\Marketplace\Test\Integration;
 
+use Magento\Framework\App\DeploymentConfig;
+use Magento\Framework\App\DeploymentConfig\Reader;
+use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Component\ComponentRegistrar;
 use Magento\Framework\Module\ModuleList;
 use Magento\TestFramework\ObjectManager;
+use PHPUnit_Framework_TestCase;
 
-class ModuleConfigTest extends \PHPUnit_Framework_TestCase
+class ModuleConfigTest extends PHPUnit_Framework_TestCase
 {
-    private $subjectModuleName;
+    private string $subjectModuleName;
 
     /**
      * @var $objectManager ObjectManager
      */
-    private $objectManager;
+    private \Magento\Framework\App\ObjectManager|ObjectManager $objectManager;
 
     protected function setUp()
     {
@@ -45,15 +49,15 @@ class ModuleConfigTest extends \PHPUnit_Framework_TestCase
 
         // The tests by default point to the wrong config directory for this test.
         $directoryList = $this->objectManager->create(
-            \Magento\Framework\App\Filesystem\DirectoryList::class,
+            DirectoryList::class,
             ['root' => BP]
         );
         $deploymentConfigReader = $this->objectManager->create(
-            \Magento\Framework\App\DeploymentConfig\Reader::class,
+            Reader::class,
             ['dirList' => $directoryList]
         );
         $deploymentConfig = $this->objectManager->create(
-            \Magento\Framework\App\DeploymentConfig::class,
+            DeploymentConfig::class,
             ['reader' => $deploymentConfigReader]
         );
 

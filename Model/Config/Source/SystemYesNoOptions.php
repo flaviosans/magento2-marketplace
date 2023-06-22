@@ -6,7 +6,9 @@
  */
 namespace FlavioSans\Marketplace\Model\Config\Source;
 
-class SystemYesNoOptions implements \Magento\Framework\Option\ArrayInterface
+use Magento\Framework\Option\ArrayInterface;
+
+class SystemYesNoOptions implements ArrayInterface
 {
     /**
      * Options getter

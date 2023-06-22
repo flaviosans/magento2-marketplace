@@ -3,16 +3,26 @@
 namespace FlavioSans\Marketplace\Controller\Vendor;
 
 
-class Profile extends \Magento\Framework\App\Action\Action
+use Magento\Customer\Api\CustomerRepositoryInterface;
+use Magento\Framework\App\Action\Action;
+use Magento\Framework\App\Action\Context;
+use Magento\Framework\View\Result\PageFactory;
+use Psr\Log\LoggerInterface;
+
+class Profile extends Action
 {
-    protected $resultPageFactory;
-    protected $logger;
+    protected PageFactory $resultPageFactory;
+    protected LoggerInterface $logger;
+    /**
+     * @var \Magento\Customer\Api\CustomerRepositoryInterface
+     */
+    private CustomerRepositoryInterface $customerRepositoryInterface;
 
     public function __construct(
-        \Magento\Framework\App\Action\Context $context,
-        \Magento\Framework\View\Result\PageFactory $resultPageFactory,
-        \Magento\Customer\Api\CustomerRepositoryInterface $customerRepositoryInterface,
-        \Psr\Log\LoggerInterface $logger
+        Context $context,
+        PageFactory $resultPageFactory,
+        CustomerRepositoryInterface $customerRepositoryInterface,
+        LoggerInterface $logger
     ) {
         $this->resultPageFactory = $resultPageFactory;
         $this->customerRepositoryInterface = $customerRepositoryInterface;

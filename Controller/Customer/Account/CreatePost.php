@@ -5,13 +5,20 @@
  */
 namespace FlavioSans\Marketplace\Controller\Customer\Account;
 
+use Exception;
 use Magento\Customer\Model\Account\Redirect as AccountRedirect;
 use Magento\Customer\Api\Data\AddressInterface;
 use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\App\Action\Context;
 use Magento\Customer\Model\Session;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\App\ObjectManager;
+use Magento\Framework\App\RequestInterface;
+use Magento\Framework\Controller\Result\Redirect;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Stdlib\Cookie\CookieMetadataFactory;
+use Magento\Framework\Stdlib\Cookie\PhpCookieManager;
+use Magento\Framework\UrlInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Customer\Api\AccountManagementInterface;
 use Magento\Customer\Helper\Address;
@@ -67,7 +74,7 @@ class CreatePost extends \Magento\Customer\Controller\Account\CreatePost
     /** @var CustomerExtractor */
     protected $customerExtractor;
 
-    /** @var \Magento\Framework\UrlInterface */
+    /** @var UrlInterface */
     protected $urlModel;
 
     /** @var DataObjectHelper  */
@@ -81,17 +88,17 @@ class CreatePost extends \Magento\Customer\Controller\Account\CreatePost
     /**
      * @var AccountRedirect
      */
-    private $accountRedirect;
+    private AccountRedirect $accountRedirect;
 
     /**
-     * @var \Magento\Framework\Stdlib\Cookie\CookieMetadataFactory
+     * @var CookieMetadataFactory
      */
-    private $cookieMetadataFactory;
+    private CookieMetadataFactory $cookieMetadataFactory;
 
     /**
-     * @var \Magento\Framework\Stdlib\Cookie\PhpCookieManager
+     * @var PhpCookieManager
      */
-    private $cookieMetadataManager;
+    private PhpCookieManager $cookieMetadataManager;
 
     /**
      * @param Context $context
@@ -121,13 +128,13 @@ class CreatePost extends \Magento\Customer\Controller\Account\CreatePost
      * Retrieve cookie manager
      *
      * @deprecated
-     * @return \Magento\Framework\Stdlib\Cookie\PhpCookieManager
+     * @return PhpCookieManager
      */
     private function getCookieManager()
     {
         if (!$this->cookieMetadataManager) {
-            $this->cookieMetadataManager = \Magento\Framework\App\ObjectManager::getInstance()->get(
-                \Magento\Framework\Stdlib\Cookie\PhpCookieManager::class
+            $this->cookieMetadataManager = ObjectManager::getInstance()->get(
+                PhpCookieManager::class
             );
         }
         return $this->cookieMetadataManager;
@@ -137,13 +144,13 @@ class CreatePost extends \Magento\Customer\Controller\Account\CreatePost
      * Retrieve cookie metadata factory
      *
      * @deprecated
-     * @return \Magento\Framework\Stdlib\Cookie\CookieMetadataFactory
+     * @return CookieMetadataFactory
      */
     private function getCookieMetadataFactory()
     {
         if (!$this->cookieMetadataFactory) {
-            $this->cookieMetadataFactory = \Magento\Framework\App\ObjectManager::getInstance()->get(
-                \Magento\Framework\Stdlib\Cookie\CookieMetadataFactory::class
+            $this->cookieMetadataFactory = ObjectManager::getInstance()->get(
+                CookieMetadataFactory::class
             );
         }
         return $this->cookieMetadataFactory;
@@ -208,7 +215,7 @@ class CreatePost extends \Magento\Customer\Controller\Account\CreatePost
      */
     public function execute()
     {
-        /** @var \Magento\Framework\Controller\Result\Redirect $resultRedirect */
+        /** @var Redirect $resultRedirect */
         $resultRedirect = $this->resultRedirectFactory->create();
         if ($this->session->isLoggedIn() || !$this->registration->isAllowed()) {
             $resultRedirect->setPath('*/*/');
@@ -224,7 +231,7 @@ class CreatePost extends \Magento\Customer\Controller\Account\CreatePost
         $this->session->regenerateId();
 
         try {
-            /** @var \Magento\Framework\App\RequestInterface $request */
+            /** @var RequestInterface $request */
             $isVendor = $this->getRequest()->getParam('is_vendor');
 
             $address = $this->extractAddress();
@@ -309,7 +316,7 @@ class CreatePost extends \Magento\Customer\Controller\Account\CreatePost
             }
         } catch (LocalizedException $e) {
             $this->messageManager->addError($this->escaper->escapeHtml($e->getMessage()));
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->messageManager->addException($e, __('We can\'t save the customer.'));
         }
 

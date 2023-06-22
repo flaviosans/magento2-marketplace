@@ -2,51 +2,59 @@
 
 namespace FlavioSans\Marketplace\Helper;
 
-class Vendor extends \Magento\Framework\App\Helper\AbstractHelper
+use Magento\Customer\Api\Data\CustomerInterface;
+use Magento\Customer\Model\Session;
+use Magento\Framework\App\Helper\AbstractHelper;
+use Magento\Framework\App\Helper\Context;
+use Magento\Framework\Registry;
+use Magento\Framework\UrlInterface;
+use Magento\Store\Model\StoreManagerInterface;
+
+class Vendor extends AbstractHelper
 {
 
     /**
      * Currently logged in customer
      *
-     * @var \Magento\Customer\Api\Data\CustomerInterface
+     * @var CustomerInterface
      */
     protected $_currentCustomer;
 
     /**
      * Core registry
      *
-     * @var \Magento\Framework\Registry
+     * @var Registry
      */
     protected $_coreRegistry;
 
     /**
-     * @var \Magento\Customer\Model\Session
+     * @var Session
      */
     protected $_customerSession;
 
     /**
-     * @var \Magento\Store\Model\StoreManagerInterface
+     * @var StoreManagerInterface
      */
     protected $_storeManager;
 
     /**
-     * @var \Magento\Framework\UrlInterface
+     * @var UrlInterface
      */
     protected $urlBuilder;
 
 
     /**
-     * @param \Magento\Framework\App\Helper\Context $context
-     * @param \Magento\Framework\Registry $coreRegistry
-     * @param \Magento\Customer\Model\Session $customerSession
-     * @param \Magento\Store\Model\StoreManagerInterface $storeManager
+     * @param Context $context
+     * @param Registry $coreRegistry
+     * @param Session $customerSession
+     * @param StoreManagerInterface $storeManager
      */
     public function __construct(
-        \Magento\Framework\App\Helper\Context $context,
-        \Magento\Framework\Registry $coreRegistry,
-        \Magento\Customer\Model\Session $customerSession,
-        \Magento\Store\Model\StoreManagerInterface $storeManager,
-        \Magento\Framework\UrlInterface $urlBuilder
+        Context $context,
+        Registry $coreRegistry,
+        Session $customerSession,
+        StoreManagerInterface $storeManager,
+        UrlInterface $urlBuilder
     ) {
         $this->_coreRegistry = $coreRegistry;
         $this->_customerSession = $customerSession;
@@ -65,7 +73,7 @@ class Vendor extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /** Retrive logged in customer
-     * @return \Magento\Customer\Api\Data\CustomerInterface
+     * @return CustomerInterface
      */
     protected function _getCurrentCustomer()
     {
@@ -75,7 +83,7 @@ class Vendor extends \Magento\Framework\App\Helper\AbstractHelper
     /**
      * Retrieve current customer
      *
-     * @return \Magento\Customer\Api\Data\CustomerInterface|null
+     * @return CustomerInterface|null
      */
     public function getCustomer()
     {

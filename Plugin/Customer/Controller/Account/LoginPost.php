@@ -14,24 +14,24 @@ class LoginPost
     /**
      * @var Session
      */
-    protected $session;
+    protected Session $session;
 
     /** @var Validator */
-    protected $formKeyValidator;
+    protected Validator $formKeyValidator;
 
     /** @var CustomerRepositoryInterface */
-    protected $customerRepositoryInterface;
+    protected CustomerRepositoryInterface $customerRepositoryInterface;
 
     /** @var ManagerInterface **/
-    protected $messageManager;
+    protected ManagerInterface $messageManager;
 
     /** @var Http **/
-    protected $responseHttp;
+    protected ResponseHttp|Http $responseHttp;
 
     protected $currentCustomer;
 
     /** @var AccountManagementInterface */
-    protected $customerAccountManagement;
+    protected AccountManagementInterface $customerAccountManagement;
 
 
     public function __construct(

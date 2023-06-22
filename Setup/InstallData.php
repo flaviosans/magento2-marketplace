@@ -2,6 +2,8 @@
 
 namespace FlavioSans\Marketplace\Setup;
 
+use Magento\Catalog\Model\Product;
+use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
 use Magento\Eav\Setup\EavSetup;
 use Magento\Eav\Setup\EavSetupFactory;
 use Magento\Customer\Setup\CustomerSetupFactory;
@@ -28,18 +30,18 @@ class InstallData implements InstallDataInterface
     /**
      * @var EavSetupFactory
      */
-    private $eavSetupFactory;
+    private EavSetupFactory $eavSetupFactory;
 
 
     /**
      * @var CustomerSetupFactory
      */
-    protected $customerSetupFactory;
+    protected CustomerSetupFactory $customerSetupFactory;
 
     /**
      * @var AttributeSetFactory
      */
-    private $attributeSetFactory;
+    private AttributeSetFactory $attributeSetFactory;
 
     /**
      * @param CustomerSetupFactory $customerSetupFactory
@@ -73,13 +75,13 @@ class InstallData implements InstallDataInterface
          *  remove vendor_id attribute
          */
         $eavSetup->removeAttribute(
-            \Magento\Catalog\Model\Product::ENTITY,
+            Product::ENTITY,
             'vendor_id');
         /**
          *  Create Vendor Id attribute
          */
         $eavSetup->addAttribute(
-            \Magento\Catalog\Model\Product::ENTITY,
+            Product::ENTITY,
             'vendor_id',
             [
                 'type' => 'int',
@@ -89,7 +91,7 @@ class InstallData implements InstallDataInterface
                 'input' => '',
                 'class' => '',
                 'source' => '',
-                'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_GLOBAL,
+                'global' => ScopedAttributeInterface::SCOPE_GLOBAL,
                 'visible' => true,
                 'required' => false,
                 'user_defined' => true,

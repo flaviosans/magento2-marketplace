@@ -3,11 +3,12 @@
 
 namespace FlavioSans\Marketplace\Model\Config\Source;
 
+use Magento\Eav\Model\Entity\Attribute\Source\AbstractSource;
 use Magento\Eav\Model\ResourceModel\Entity\Attribute\OptionFactory;
 
 use Magento\Framework\DB\Ddl\Table;
 
-class CustomerYesNoOptions extends \Magento\Eav\Model\Entity\Attribute\Source\AbstractSource
+class CustomerYesNoOptions extends AbstractSource
 {
     /**
      * Option values
@@ -19,7 +20,7 @@ class CustomerYesNoOptions extends \Magento\Eav\Model\Entity\Attribute\Source\Ab
     /**
      * @var optionFactory
      */
-    protected $optionFactory;
+    protected OptionFactory $optionFactory;
 
     /*
      * Retrieve all options array

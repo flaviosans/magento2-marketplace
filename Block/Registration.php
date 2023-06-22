@@ -1,6 +1,8 @@
 <?php
 
 namespace FlavioSans\Marketplace\Block;
+use FlavioSans\Marketplace\Model\Config\Source\CustomerYesNoOptions;
+use FlavioSans\Marketplace\Model\Config\Source\IsVendorOptions;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
 
@@ -9,12 +11,12 @@ class Registration extends Template
     /**
      * Registration constructor.
      * @param Context $context
-     * @param \FlavioSans\Marketplace\Model\Config\Source\IsVendorOptions $isVendorOptions
+     * @param IsVendorOptions $isVendorOptions
      * @param array $data
      */
     public function __construct(
         Context $context,
-        \FlavioSans\Marketplace\Model\Config\Source\CustomerYesNoOptions $isVendorOptions,
+        CustomerYesNoOptions $isVendorOptions,
         array $data
     )
     {
