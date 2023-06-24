@@ -12,54 +12,23 @@ use Magento\Store\Model\StoreManagerInterface;
 
 class Vendor extends AbstractHelper
 {
-
     /**
-     * Currently logged in customer
+     * Constructor.
      *
-     * @var CustomerInterface
-     */
-    protected $_currentCustomer;
-
-    /**
-     * Core registry
-     *
-     * @var Registry
-     */
-    protected $_coreRegistry;
-
-    /**
-     * @var Session
-     */
-    protected $_customerSession;
-
-    /**
-     * @var StoreManagerInterface
-     */
-    protected $_storeManager;
-
-    /**
-     * @var UrlInterface
-     */
-    protected $urlBuilder;
-
-
-    /**
      * @param Context $context
      * @param Registry $coreRegistry
      * @param Session $customerSession
      * @param StoreManagerInterface $storeManager
+     * @param UrlInterface $urlBuilder
      */
     public function __construct(
-        Context $context,
-        Registry $coreRegistry,
-        Session $customerSession,
-        StoreManagerInterface $storeManager,
-        UrlInterface $urlBuilder
+        private Context $context,
+        private Registry $coreRegistry,
+        private Session $customerSession,
+        private StoreManagerInterface $storeManager,
+        private UrlInterface $urlBuilder
     ) {
-        $this->_coreRegistry = $coreRegistry;
-        $this->_customerSession = $customerSession;
-        $this->_storeManager = $storeManager;
-        $this->urlBuilder = $urlBuilder;
+
         parent::__construct($context);
     }
 
@@ -69,7 +38,7 @@ class Vendor extends AbstractHelper
     */
     public function _isCustomerLogIn()
     {
-    	return $this->_customerSession->isLoggedIn();
+    	return $this->customerSession->isLoggedIn();
     }
 
     /** Retrive logged in customer
@@ -87,11 +56,11 @@ class Vendor extends AbstractHelper
      */
     public function getCustomer()
     {
-        if(!$this->_currentCustomer && $this->_isCustomerLogIn())
+        if(!$this->currentCustomer && $this->_isCustomerLogIn())
         {
-            $this->_currentCustomer = $this->_customerSession->getCustomerDataObject();
+            $this->currentCustomer = $this->customerSession->getCustomerDataObject();
         }
-        return $this->_currentCustomer;
+        return $this->currentCustomer;
     }
 
     /**

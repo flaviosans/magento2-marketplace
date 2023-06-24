@@ -11,22 +11,12 @@ use Psr\Log\LoggerInterface;
 
 class Profile extends Action
 {
-    protected PageFactory $resultPageFactory;
-    protected LoggerInterface $logger;
-    /**
-     * @var \Magento\Customer\Api\CustomerRepositoryInterface
-     */
-    private CustomerRepositoryInterface $customerRepositoryInterface;
-
     public function __construct(
-        Context $context,
-        PageFactory $resultPageFactory,
-        CustomerRepositoryInterface $customerRepositoryInterface,
-        LoggerInterface $logger
+        private Context $context,
+        private PageFactory $resultPageFactory,
+        private CustomerRepositoryInterface $customerRepositoryInterface,
+        private LoggerInterface $logger
     ) {
-        $this->resultPageFactory = $resultPageFactory;
-        $this->customerRepositoryInterface = $customerRepositoryInterface;
-        $this->logger = $logger;
         parent::__construct($context);
     }
 

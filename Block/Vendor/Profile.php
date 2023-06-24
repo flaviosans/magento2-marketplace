@@ -1,4 +1,5 @@
 <?php
+
 namespace FlavioSans\Marketplace\Block\Vendor;
 
 use Magento\Framework\View\Element\Template;
@@ -13,10 +14,9 @@ class Profile extends Template
      * @param array $data
      */
     public function __construct(
-        Context $context,
-        array $data
-    )
-    {
+        private Context $context,
+        private array $data
+    ) {
         parent::__construct($context, $data);
     }
 
@@ -26,7 +26,8 @@ class Profile extends Template
         return '';
     }
 
-    public function getSaveProfileUrl() {
+    public function getSaveProfileUrl()
+    {
         return $this->getUrl('marketplace/vendor/save');
     }
 }

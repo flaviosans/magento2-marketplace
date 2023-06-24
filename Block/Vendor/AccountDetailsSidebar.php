@@ -13,8 +13,8 @@ class AccountDetailsSidebar extends Template
      * @param array $data
      */
     public function __construct(
-        Context $context,
-        array $data
+        private Context $context,
+        private array $data
     ) {
         parent::__construct($context, $data);
     }

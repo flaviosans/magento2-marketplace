@@ -9,14 +9,16 @@ use Magento\Framework\View\Result\PageFactory;
 
 class Save extends Action
 {
-    protected PageFactory $resultPageFactory;
-    protected $logger;
-
+    /**
+     * Constructor.
+     *
+     * @param Context $context
+     * @param PageFactory $resultPageFactory
+     */
     public function __construct(
-        Context $context,
-        PageFactory $resultPageFactory
+        private Context $context,
+        private PageFactory $resultPageFactory
     ) {
-        $this->resultPageFactory = $resultPageFactory;
         parent::__construct($context);
     }
 

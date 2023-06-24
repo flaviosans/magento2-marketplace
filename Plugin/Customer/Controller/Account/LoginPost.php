@@ -12,44 +12,22 @@ use Magento\Framework\App\Response\Http as ResponseHttp;
 class LoginPost
 {
     /**
-     * @var Session
+     * @param Session $customerSession
+     * @param Validator $formKeyValidator
+     * @param CustomerRepositoryInterface $customerRepositoryInterface
+     * @param ManagerInterface $messageManager
+     * @param ResponseHttp $responseHttp
+     * @param AccountManagementInterface $customerAccountManagement
      */
-    protected Session $session;
-
-    /** @var Validator */
-    protected Validator $formKeyValidator;
-
-    /** @var CustomerRepositoryInterface */
-    protected CustomerRepositoryInterface $customerRepositoryInterface;
-
-    /** @var ManagerInterface **/
-    protected ManagerInterface $messageManager;
-
-    /** @var Http **/
-    protected ResponseHttp|Http $responseHttp;
-
-    protected $currentCustomer;
-
-    /** @var AccountManagementInterface */
-    protected AccountManagementInterface $customerAccountManagement;
-
-
     public function __construct(
-        Session $customerSession,
-        Validator $formKeyValidator,
-        CustomerRepositoryInterface $customerRepositoryInterface,
-        ManagerInterface $messageManager,
-        ResponseHttp $responseHttp,
-        AccountManagementInterface $customerAccountManagement
+        private Session $customerSession,
+        private Validator $formKeyValidator,
+        private CustomerRepositoryInterface $customerRepositoryInterface,
+        private ManagerInterface $messageManager,
+        private ResponseHttp $responseHttp,
+        private AccountManagementInterface $customerAccountManagement
     )
-    {
-        $this->session = $customerSession;
-        $this->formKeyValidator = $formKeyValidator;
-        $this->customerRepositoryInterface = $customerRepositoryInterface;
-        $this->messageManager = $messageManager;
-        $this->responseHttp = $responseHttp;
-        $this->customerAccountManagement = $customerAccountManagement;
-    }
+    { }
 
     public function aroundExecute(\Magento\Customer\Controller\Account\LoginPost $loginPost, \Closure $proceed)
     {
@@ -83,7 +61,7 @@ class LoginPost
                 {
                     $message = "Invalid User credentials.";
                     $this->messageManager->addError($message);
-                    $this->session->setUsername($login['username']);
+                    $this->customerSession->setUsername($login['username']);
                     $this->responseHttp->setRedirect('customer/account/login');
                 }
 

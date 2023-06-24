@@ -17,5 +17,8 @@
     "psr-4": {
       "FlavioSans\\Marketplace\\": ""
     }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.2"
   }
 }

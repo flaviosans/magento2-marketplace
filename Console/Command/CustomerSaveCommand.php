@@ -10,35 +10,13 @@ use Magento\Customer\Model\Customer;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\App\State;
 
-class CustomerSaveCommand extends  Command
+class CustomerSaveCommand extends Command
 {
-    /**
-     * @var Customer
-     */
-    protected Customer $customer;
-
-    /**
-     * @var CustomerRepositoryInterface
-     */
-    protected CustomerRepositoryInterface $customerRepository;
-
-
-    /**
-     * @var State
-     */
-    protected State $state;
-
-
     public function __construct(
-        Customer $customer,
-        CustomerRepositoryInterface $customerRepository,
-        State $state
-    )
-    {
-        $this->customer = $customer;
-        $this->customerRepository = $customerRepository;
-        $this->state = $state;
-
+        private Customer $customer,
+        private CustomerRepositoryInterface $customerRepository,
+        private State $state
+    ) {
         parent::__construct();
     }
 
@@ -59,18 +37,16 @@ class CustomerSaveCommand extends  Command
     {
         $this->state->setAreaCode('frontend');
         $customers = $this->customer->getCollection();
-       // $customers->getSelect()->limit(1);
+        // $customers->getSelect()->limit(1);
 
-        foreach($customers as $customer)
-        {
+        foreach ($customers as $customer) {
             $customer_id = $customer->getData('entity_id');
             $customer = $this->customerRepository->getById($customer_id);
             $customer->setCustomAttribute('is_vendor', 0);
             $customer->setCustomAttribute('approve_account', 1);
             try {
                 $this->customerRepository->save($customer);
-            }
-            catch (Exception $e) {
+            } catch (Exception $e) {
                 $this->writeErrorLog($e->getMessage());
             }
         }
